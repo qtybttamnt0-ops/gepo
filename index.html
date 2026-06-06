@@ -49,7 +49,6 @@
         <button class="equal" onclick="calculate()">=</button>
     </div>
 
-    <!-- هذا الزر سيظهر فقط عند كتابة 0000 والضغط على = -->
     <a id="secret-link" href="instagram://app">اضغط هنا لفتح التطبيق</a>
 </div>
 
@@ -58,21 +57,17 @@
     let secretLink = document.getElementById("secret-link");
 
     function press(num) {
-        if (screen.value === "0") {
-            screen.value = num;
-        } else {
-            screen.value += num;
-        }
+        screen.value += num;
     }
 
     function clearScreen() {
         screen.value = "";
-        secretLink.style.display = "none"; // إخفاء الزر عند مسح الشاشة
+        secretLink.style.display = "none";
     }
 
     function calculate() {
-        if (screen.value === "0000") {
-            // بدلاً من الفتح التلقائي المحظور، سنظهر الزر للمستخدم ليضغط عليه ويفتح التطبيق غصب عن المتصفح
+        // الرمز السري الجديد صار 1234
+        if (screen.value === "1234") {
             secretLink.style.display = "block";
             screen.value = "تم التحقق";
         } else {
