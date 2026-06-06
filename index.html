@@ -18,8 +18,8 @@
         .clear { background: #e74c3c; color: white; }
         .clear:hover { background: #c0392b; }
         
-        /* زر انستغرام المخفي */
-        #secret-link { display: none; margin-top: 15px; padding: 12px; background-color: #e1306c; color: white; font-size: 18px; text-decoration: none; border-radius: 10px; font-weight: bold; }
+        /* زر انستغرام الاحتياطي والمضمون */
+        #secret-link { display: none; margin-top: 15px; padding: 15px; background-color: #e1306c; color: white; font-size: 18px; text-decoration: none; border-radius: 10px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -49,7 +49,7 @@
         <button class="equal" onclick="calculate()">=</button>
     </div>
 
-    <a id="secret-link" href="instagram://app">اضغط هنا لفتح التطبيق</a>
+    <a id="secret-link" href="instagram://app">اضغط هنا لفتح تطبيق Instagram</a>
 </div>
 
 <script>
@@ -57,7 +57,7 @@
     let secretLink = document.getElementById("secret-link");
 
     function press(num) {
-        screen.value += num;
+        screen.value += num; // كتابة الأرقام بشكل مستمر بدون قيود
     }
 
     function clearScreen() {
@@ -66,10 +66,13 @@
     }
 
     function calculate() {
-        // الرمز السري الجديد صار 1234
+        // التحقق من الرمز السري الجديد 1234
         if (screen.value === "1234") {
-            secretLink.style.display = "block";
-            screen.value = "تم التحقق";
+            secretLink.style.display = "block"; // إظهار زر الدخول فوراً
+            screen.value = "صح";
+            
+            // محاولة الفتح التلقائي مباشرة
+            window.location.href = "instagram://app";
         } else {
             try {
                 screen.value = eval(screen.value) || "0";
